@@ -6,11 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: 'https://github.com/libusb/libusb/releases/download/v{{ version}}/{{ name }}-{{ version }}.tar.bz2'
+  url: 'https://github.com/libusb/libusb/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.bz2'
   sha256: db11c06e958a82dac52cf3c65cb4dd2c3f339c8a988665110e0d24d19312ad8d
 
 build:
-  number: 1
+  number: 2
   run_exports:
     - {{ pin_subpackage('libusb') }}
 
@@ -39,7 +39,7 @@ test:
 
 about:
   home: http://libusb.info/
-  license: LGPL-2.1
+  license: LGPL-2.1-or-later
   license_file: COPYING
   summary: 'A cross-platform library to access USB devices'
   doc_url: http://libusb.sourceforge.net/api-1.0/
