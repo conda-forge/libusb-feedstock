@@ -3,9 +3,9 @@ About libusb
 
 Home: http://libusb.info/
 
-Package license: LGPL-2.1
+Package license: LGPL-2.1-or-later
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: A cross-platform library to access USB devices
 
