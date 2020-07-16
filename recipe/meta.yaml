@@ -10,7 +10,7 @@ source:
   sha256: db11c06e958a82dac52cf3c65cb4dd2c3f339c8a988665110e0d24d19312ad8d
 
 build:
-  number: 2
+  number: 3
   run_exports:
     - {{ pin_subpackage('libusb') }}
 
@@ -21,6 +21,9 @@ requirements:
     - {{ cdt('libudev-devel') }}  # [linux]
     - libtool  # [unix]
   host:
+  run:
+    # need patchelf for post-link.sh script to work around missing libudev.so.0
+    - patchelf  # [linux]
 
 test:
   commands:

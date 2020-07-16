@@ -5,6 +5,7 @@ if ldd "$LIBUSB_PATH" | grep -q 'libudev\.so\.0.*not found'; then
     TMPLIB=$(mktemp -t libusb-1.0-XXXXXXXXXX.so)
     patchelf --replace-needed libudev.so.0 libudev.so.1 --output "$TMPLIB" "$LIBUSB_PATH"
     # get the path to libudev.so.1
+    chmod +x "$TMPLIB"
     LIBUDEV_PATH=$(ldd "$TMPLIB" | grep libudev.so.1 | sed -n 's,[^/]*\(/.*\) (0x.*,\1,p')
     rm "$TMPLIB"
     # link libudev.so.0 to libudev.so.1 for this environment
