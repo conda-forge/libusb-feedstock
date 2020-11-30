@@ -5,11 +5,13 @@ Home: http://libusb.info/
 
 Package license: LGPL-2.1-or-later
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/libusb-feedstock/blob/master/LICENSE.txt)
 
 Summary: A cross-platform library to access USB devices
 
+Development: https://github.com/libusb/libusb
 
+Documentation: http://libusb.sourceforge.net/api-1.0/
 
 Current build status
 ====================
