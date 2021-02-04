@@ -36,7 +36,7 @@ test:
 
     - if not exist %PREFIX%\\Library\\bin\\libusb-1.0.dll exit 1            # [win]
     - if not exist %PREFIX%\\Library\\lib\\libusb-1.0.lib exit 1            # [win]
-    - if not exist %PREFIX%\\Library\\lib\\libusb-1.0.pdb exit 1            # [win]
+    #- if not exist %PREFIX%\\Library\\lib\\libusb-1.0.pdb exit 1            # [win]
     #- if not exist %PREFIX%\\Library\\lib\\libusb-1.0_static.lib exit 1     # [win]
     - if not exist %PREFIX%\\Library\\include\\libusb-1.0\\libusb.h exit 1  # [win]
 
