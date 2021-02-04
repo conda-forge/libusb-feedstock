@@ -63,8 +63,10 @@ copy %SRC_DIR%\%SLN_PLAT%\Release\dll\libusb-1.0.lib %LIBRARY_LIB%\
 if errorlevel 1 exit 1
 copy %SRC_DIR%\%SLN_PLAT%\Release\dll\libusb-1.0.pdb %LIBRARY_LIB%\
 if errorlevel 1 exit 1
-copy %SRC_DIR%\%SLN_PLAT%\Release\lib\libusb-1.0.lib %LIBRARY_LIB%\libusb-1.0_static.lib
-if errorlevel 1 exit 1
+:: Don't include static library in the package
+:: CFEP-18 (https://github.com/conda-forge/cfep/blob/master/cfep-18.md)
+rem  copy %SRC_DIR%\%SLN_PLAT%\Release\lib\libusb-1.0.lib %LIBRARY_LIB%\libusb-1.0_static.lib
+rem  if errorlevel 1 exit 1
 mkdir %LIBRARY_INC%\libusb-1.0
 copy %SRC_DIR%\libusb\libusb.h %LIBRARY_INC%\libusb-1.0\
 if errorlevel 1 exit 1
