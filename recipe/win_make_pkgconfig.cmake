@@ -24,7 +24,7 @@ includedir=@includedir@/libusb-1.0
 Name: libusb-1.0
 Description: C API for USB device access from Linux, Mac OS X, Windows, OpenBSD/NetBSD and Solaris userspace
 Version: @VERSION@
-Libs: -L${libdir} -llibusb-1.0
+Libs: -L${libdir} -lusb-1.0
 Cflags: -I${includedir}
 ]=])
 
