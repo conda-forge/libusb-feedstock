@@ -71,3 +71,12 @@ rem  if errorlevel 1 exit 1
 mkdir %LIBRARY_INC%\libusb-1.0
 copy %SRC_DIR%\libusb\libusb.h %LIBRARY_INC%\libusb-1.0\
 if errorlevel 1 exit 1
+
+:: Create a pkg-config file
+:: (use cmake just because it's convenient for replacing @VAR@ in files
+cmake ^
+  -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" ^
+  -DCMAKE_INSTALL_LIBDIR=lib ^
+  -DVERSION="%PKG_VERSION%" ^
+  -P "%RECIPE_DIR%\win_make_pkgconfig.cmake"
+if errorlevel 1 exit 1
