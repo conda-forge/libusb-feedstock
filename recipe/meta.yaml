@@ -10,7 +10,7 @@ source:
   sha256: 7efd2685f7b327326dcfb85cee426d9b871fd70e22caa15bb68d595ce2a2b12a
 
 build:
-  number: 2
+  number: 4
   run_exports:
     - {{ pin_subpackage('libusb') }}
 
@@ -18,7 +18,6 @@ requirements:
   build:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
     # libudev is on its own in CentOS 6, packaged with systemd in CentOS 7
     - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
     - {{ cdt('systemd-devel') }}  # [linux and cdt_name=='cos7']
@@ -34,13 +33,10 @@ requirements:
 test:
   commands:
     - test -f $PREFIX/include/libusb-1.0/libusb.h   # [unix]
-    #- test -f $PREFIX/lib/libusb-1.0.a              # [unix]
     - test -f $PREFIX/lib/libusb-1.0${SHLIB_EXT}    # [unix]
 
     - if not exist %PREFIX%\\Library\\bin\\libusb-1.0.dll exit 1            # [win]
     - if not exist %PREFIX%\\Library\\lib\\libusb-1.0.lib exit 1            # [win]
-    #- if not exist %PREFIX%\\Library\\lib\\libusb-1.0.pdb exit 1            # [win]
-    #- if not exist %PREFIX%\\Library\\lib\\libusb-1.0_static.lib exit 1     # [win]
     - if not exist %PREFIX%\\Library\\include\\libusb-1.0\\libusb.h exit 1  # [win]
 
 about:
