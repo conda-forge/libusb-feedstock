@@ -1,5 +1,6 @@
 {% set name = "libusb" %}
 {% set version = "1.0.24" %}
+{% set build = 5 %}
 
 package:
   name: {{ name|lower }}
@@ -10,7 +11,9 @@ source:
   sha256: 7efd2685f7b327326dcfb85cee426d9b871fd70e22caa15bb68d595ce2a2b12a
 
 build:
-  number: 4
+  # prioritize builds with native libudev dependency by increasing build number
+  number: {{ build }}  # [linux and cdt_name=='cos6']
+  number: {{ build + 100 }}  # [not linux or (linux and cdt_name!='cos6')]
   run_exports:
     - {{ pin_subpackage('libusb') }}
 
@@ -18,17 +21,15 @@ requirements:
   build:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
-    # libudev is on its own in CentOS 6, packaged with systemd in CentOS 7
+    - sysroot_linux-64 2.17  # [linux64 and cdt_name!='cos6']
+    # need a CDT for libudev for cos6, proper package available for cos7 (below)
     - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
-    - {{ cdt('systemd-devel') }}  # [linux and cdt_name=='cos7']
     # cmake is only for doing string substitution for creating pkg-config file
     - cmake  # [win]
     - libtool  # [unix]
     - make  # [unix]
   host:
-  run:
-    # need patchelf for post-link.sh script to work around missing libudev.so.0
-    - patchelf  # [linux]
+    - libudev  # [linux and cdt_name!='cos6']
 
 test:
   commands:
