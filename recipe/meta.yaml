@@ -3,7 +3,7 @@
 {% set build = 5 %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name|lower }}-split
   version: {{ version }}
 
 source:
@@ -14,31 +14,42 @@ build:
   # prioritize builds with native libudev dependency by increasing build number
   number: {{ build }}  # [linux and cdt_name=='cos6']
   number: {{ build + 100 }}  # [not linux or (linux and cdt_name!='cos6')]
-  run_exports:
-    - {{ pin_subpackage('libusb') }}
 
-requirements:
-  build:
-    - gnuconfig  # [unix]
-    - {{ compiler('c') }}
-    - sysroot_linux-64 2.17  # [linux64 and cdt_name!='cos6']
-    # need a CDT for libudev for cos6, proper package available for cos7 (below)
-    - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
-    # cmake is only for doing string substitution for creating pkg-config file
-    - cmake  # [win]
-    - libtool  # [unix]
-    - make  # [unix]
-  host:
-    - libudev  # [linux and cdt_name!='cos6']
+outputs:
+  - name: libusb
+    script: bld.bat  # [win]
+    script: build.sh  # [not win]
+    build:
+      run_exports:
+        - {{ pin_subpackage('libusb') }}
+    requirements:
+      build:
+        - gnuconfig  # [unix]
+        - {{ compiler('c') }}
+        - sysroot_linux-64 2.17  # [linux64 and cdt_name!='cos6']
+        # need a CDT for libudev for cos6, proper package available for cos7 (below)
+        - {{ cdt('libudev-devel') }}  # [linux and cdt_name=='cos6']
+        # cmake is only for doing string substitution for creating pkg-config file
+        - cmake  # [win]
+        - libtool  # [unix]
+        - make  # [unix]
+      host:
+        - libudev  # [linux and cdt_name!='cos6']
+    test:
+      commands:
+        - test -f $PREFIX/include/libusb-1.0/libusb.h   # [unix]
+        - test -f $PREFIX/lib/libusb-1.0${SHLIB_EXT}    # [unix]
 
-test:
-  commands:
-    - test -f $PREFIX/include/libusb-1.0/libusb.h   # [unix]
-    - test -f $PREFIX/lib/libusb-1.0${SHLIB_EXT}    # [unix]
+        - if not exist %PREFIX%\\Library\\bin\\libusb-1.0.dll exit 1            # [win]
+        - if not exist %PREFIX%\\Library\\lib\\libusb-1.0.lib exit 1            # [win]
+        - if not exist %PREFIX%\\Library\\include\\libusb-1.0\\libusb.h exit 1  # [win]
 
-    - if not exist %PREFIX%\\Library\\bin\\libusb-1.0.dll exit 1            # [win]
-    - if not exist %PREFIX%\\Library\\lib\\libusb-1.0.lib exit 1            # [win]
-    - if not exist %PREFIX%\\Library\\include\\libusb-1.0\\libusb.h exit 1  # [win]
+  - name: libusb-cos6
+    build:
+      skip: true  # [not (linux and cdt_name=='cos6')]
+    requirements:
+      run:
+        - {{ pin_subpackage('libusb', exact=True) }}
 
 about:
   home: http://libusb.info/
@@ -49,6 +60,7 @@ about:
   dev_url: https://github.com/libusb/libusb
 
 extra:
+  feedstock-name: libusb
   recipe-maintainers:
     - hoechenberger
     - kastman
