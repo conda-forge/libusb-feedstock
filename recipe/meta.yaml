@@ -50,6 +50,10 @@ outputs:
     requirements:
       run:
         - {{ pin_subpackage('libusb', exact=True) }}
+    test:
+      commands:
+        - test -f $PREFIX/include/libusb-1.0/libusb.h
+        - test -f $PREFIX/lib/libusb-1.0${SHLIB_EXT}
 
 about:
   home: http://libusb.info/
