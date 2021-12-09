@@ -17,8 +17,8 @@ build:
 
 outputs:
   - name: libusb
-    script: bld.bat  # [win]
-    script: build.sh  # [not win]
+    script: build_libusb.bat  # [win]
+    script: build_libusb.sh  # [not win]
     build:
       run_exports:
         - {{ pin_subpackage('libusb') }}
