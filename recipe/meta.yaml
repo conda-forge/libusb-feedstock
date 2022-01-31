@@ -1,6 +1,6 @@
 {% set name = "libusb" %}
-{% set version = "1.0.24" %}
-{% set build = 5 %}
+{% set version = "1.0.25" %}
+{% set build = 0 %}
 
 package:
   name: {{ name|lower }}-split
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/libusb/libusb/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.bz2
-  sha256: 7efd2685f7b327326dcfb85cee426d9b871fd70e22caa15bb68d595ce2a2b12a
+  sha256: 8a28ef197a797ebac2702f095e81975e2b02b2eeff2774fa909c78a74ef50849
 
 build:
   # prioritize builds with native libudev dependency by increasing build number
