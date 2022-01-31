@@ -17,14 +17,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://travis-ci.com/conda-forge/libusb-feedstock">
-        <img alt="macOS" src="https://img.shields.io/travis/com/conda-forge/libusb-feedstock/master.svg?label=macOS">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
@@ -38,17 +31,10 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_cdt_namecos6</td>
+              <td>linux_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7214&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libusb-feedstock?branchName=master&jobName=linux&configuration=linux_64_cdt_namecos6" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cdt_namecos7</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7214&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libusb-feedstock?branchName=master&jobName=linux&configuration=linux_64_cdt_namecos7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libusb-feedstock?branchName=master&jobName=linux&configuration=linux_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
