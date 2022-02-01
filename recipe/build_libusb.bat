@@ -2,11 +2,8 @@ setlocal EnableDelayedExpansion
 @echo on
 
 :: Configure
-if "%ARCH%" == "32" (
-  set SLN_PLAT=Win32
-) else (
-  set SLN_PLAT=x64
-)
+set "SLN_PLAT=%CMAKE_GENERATOR_PLATFORM%"
+set "SLN_TOOLSET=%CMAKE_GENERATOR_TOOLSET%"
 
 if "%VS_YEAR%" == "2015" (
   set "SLN_FILE=msvc\libusb_2015.sln"
@@ -53,6 +50,7 @@ if not exist "%MSBUILD_CMD%" (
 "%MSBUILD_CMD%" "%SLN_FILE%" ^
   /p:Configuration="Release" ^
   /p:Platform="%SLN_PLAT%" ^
+  /p:PlatformToolset="%SLN_TOOLSET%" ^
   /verbosity:normal
 if errorlevel 1 exit 1
 
