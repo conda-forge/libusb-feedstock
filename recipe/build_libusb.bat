@@ -7,12 +7,15 @@ set "SLN_TOOLSET=%CMAKE_GENERATOR_TOOLSET%"
 
 if "%VS_YEAR%" == "2015" (
   set "SLN_FILE=msvc\libusb_2015.sln"
+  set "TGT_SDK_VERSION=10.0.14393.795"
 )
 if "%VS_YEAR%" == "2017" (
   set "SLN_FILE=msvc\libusb_2017.sln"
+  set "TGT_SDK_VERSION=10.0.17763.0"
 )
 if "%VS_YEAR%" == "2019" (
   set "SLN_FILE=msvc\libusb_2019.sln"
+  set "TGT_SDK_VERSION=10.0.20348.0"
 )
 
 set "MSBUILD_CMD=%VSINSTALLDIR%MSBuild\%VS_VERSION%\Bin\MSBuild.exe"
@@ -51,6 +54,7 @@ if not exist "%MSBUILD_CMD%" (
   /p:Configuration="Release" ^
   /p:Platform="%SLN_PLAT%" ^
   /p:PlatformToolset="%SLN_TOOLSET%" ^
+  /p:WindowsTargetPlatformVersion="%TGT_SDK_VERSION%" ^
   /verbosity:normal
 if errorlevel 1 exit 1
 
