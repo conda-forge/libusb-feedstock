@@ -13,3 +13,8 @@ cudnn:  # [linux64]
 docker_image:  # [linux64]
   - quay.io/condaforge/linux-anvil-cos7-x86_64  # [linux64]
   - quay.io/condaforge/linux-anvil-cos7-x86_64  # [linux64]
+
+MACOSX_DEPLOYMENT_TARGET:  # [osx and x86_64]
+  - "10.12"                # [osx and x86_64]
+MACOSX_SDK_VERSION:        # [osx and x86_64]
+  - "10.12"                # [osx and x86_64]
