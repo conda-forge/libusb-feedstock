@@ -59,18 +59,18 @@ if errorlevel 1 exit 1
 :: Install
 cmake -E make_directory %LIBRARY_BIN%
 if errorlevel 1 exit 1
-cmake -E copy %SRC_DIR%\%SLN_PLAT%\Release\dll\libusb-1.0.dll %LIBRARY_BIN%\
+cmake -E copy %SRC_DIR%\build\%SLN_TOOLSET%\%SLN_PLAT%\Release\dll\libusb-1.0.dll %LIBRARY_BIN%\
 if errorlevel 1 exit 1
 cmake -E make_directory %LIBRARY_LIB%
 if errorlevel 1 exit 1
-cmake -E copy %SRC_DIR%\%SLN_PLAT%\Release\dll\libusb-1.0.lib %LIBRARY_LIB%\
+cmake -E copy %SRC_DIR%\build\%SLN_TOOLSET%\%SLN_PLAT%\Release\dll\libusb-1.0.lib %LIBRARY_LIB%\
 if errorlevel 1 exit 1
 :: Don't include debug library in the package
-rem  copy %SRC_DIR%\%SLN_PLAT%\Release\dll\libusb-1.0.pdb %LIBRARY_LIB%\
+rem  copy %SRC_DIR%\build\%SLN_TOOLSET%\%SLN_PLAT%\Release\dll\libusb-1.0.pdb %LIBRARY_LIB%\
 rem  if errorlevel 1 exit 1
 :: Don't include static library in the package
 :: CFEP-18 (https://github.com/conda-forge/cfep/blob/master/cfep-18.md)
-rem  copy %SRC_DIR%\%SLN_PLAT%\Release\lib\libusb-1.0.lib %LIBRARY_LIB%\libusb-1.0_static.lib
+rem  copy %SRC_DIR%\build\%SLN_TOOLSET%\%SLN_PLAT%\Release\lib\libusb-1.0.lib %LIBRARY_LIB%\libusb-1.0_static.lib
 rem  if errorlevel 1 exit 1
 cmake -E make_directory %LIBRARY_INC%\libusb-1.0
 if errorlevel 1 exit 1
