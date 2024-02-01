@@ -4,17 +4,15 @@ setlocal EnableDelayedExpansion
 :: Configure
 set "SLN_PLAT=%CMAKE_GENERATOR_PLATFORM%"
 set "SLN_TOOLSET=%CMAKE_GENERATOR_TOOLSET%"
+set "SLN_FILE=msvc\libusb.sln"
 
 if "%VS_YEAR%" == "2015" (
-  set "SLN_FILE=msvc\libusb_2015.sln"
   set "TGT_SDK_VERSION=10.0.14393.795"
 )
 if "%VS_YEAR%" == "2017" (
-  set "SLN_FILE=msvc\libusb_2017.sln"
   set "TGT_SDK_VERSION=10.0.17763.0"
 )
 if "%VS_YEAR%" == "2019" (
-  set "SLN_FILE=msvc\libusb_2019.sln"
   set "TGT_SDK_VERSION=10.0.20348.0"
 )
 
@@ -61,18 +59,18 @@ if errorlevel 1 exit 1
 :: Install
 cmake -E make_directory %LIBRARY_BIN%
 if errorlevel 1 exit 1
-cmake -E copy %SRC_DIR%\%SLN_PLAT%\Release\dll\libusb-1.0.dll %LIBRARY_BIN%\
+cmake -E copy %SRC_DIR%\build\%SLN_TOOLSET%\%SLN_PLAT%\Release\dll\libusb-1.0.dll %LIBRARY_BIN%\
 if errorlevel 1 exit 1
 cmake -E make_directory %LIBRARY_LIB%
 if errorlevel 1 exit 1
-cmake -E copy %SRC_DIR%\%SLN_PLAT%\Release\dll\libusb-1.0.lib %LIBRARY_LIB%\
+cmake -E copy %SRC_DIR%\build\%SLN_TOOLSET%\%SLN_PLAT%\Release\dll\libusb-1.0.lib %LIBRARY_LIB%\
 if errorlevel 1 exit 1
 :: Don't include debug library in the package
-rem  copy %SRC_DIR%\%SLN_PLAT%\Release\dll\libusb-1.0.pdb %LIBRARY_LIB%\
+rem  copy %SRC_DIR%\build\%SLN_TOOLSET%\%SLN_PLAT%\Release\dll\libusb-1.0.pdb %LIBRARY_LIB%\
 rem  if errorlevel 1 exit 1
 :: Don't include static library in the package
 :: CFEP-18 (https://github.com/conda-forge/cfep/blob/master/cfep-18.md)
-rem  copy %SRC_DIR%\%SLN_PLAT%\Release\lib\libusb-1.0.lib %LIBRARY_LIB%\libusb-1.0_static.lib
+rem  copy %SRC_DIR%\build\%SLN_TOOLSET%\%SLN_PLAT%\Release\lib\libusb-1.0.lib %LIBRARY_LIB%\libusb-1.0_static.lib
 rem  if errorlevel 1 exit 1
 cmake -E make_directory %LIBRARY_INC%\libusb-1.0
 if errorlevel 1 exit 1
