@@ -220,6 +220,3 @@ Feedstock Maintainers
 * [@kastman](https://github.com/kastman/)
 * [@ryanvolz](https://github.com/ryanvolz/)
 
-
-<!-- dummy commit to enable rerendering -->
-
