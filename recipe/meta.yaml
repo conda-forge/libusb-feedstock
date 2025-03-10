@@ -30,7 +30,7 @@ outputs:
         - libtool  # [unix]
         - make  # [unix]
       host:
-        - libudev
+        - libudev  # [linux]
     test:
       commands:
         - test -f $PREFIX/include/libusb-1.0/libusb.h   # [unix]
