@@ -17,14 +17,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://app.travis-ci.com/conda-forge/libusb-feedstock">
-        <img alt="linux" src="https://img.shields.io/travis/com/conda-forge/libusb-feedstock/main.svg?label=Linux">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
@@ -38,17 +31,10 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_cdt_namecos6</td>
+              <td>linux_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7214&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libusb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cdt_namecos6" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_cdt_namecos7</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7214&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libusb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_cdt_namecos7" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/libusb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -100,7 +86,6 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libusb-green.svg)](https://anaconda.org/conda-forge/libusb) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libusb.svg)](https://anaconda.org/conda-forge/libusb) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libusb.svg)](https://anaconda.org/conda-forge/libusb) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libusb.svg)](https://anaconda.org/conda-forge/libusb) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libusb--cos6-green.svg)](https://anaconda.org/conda-forge/libusb-cos6) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libusb-cos6.svg)](https://anaconda.org/conda-forge/libusb-cos6) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libusb-cos6.svg)](https://anaconda.org/conda-forge/libusb-cos6) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libusb-cos6.svg)](https://anaconda.org/conda-forge/libusb-cos6) |
 
 Installing libusb
 =================
@@ -112,16 +97,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libusb, libusb-cos6` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libusb` can be installed with `conda`:
 
 ```
-conda install libusb libusb-cos6
+conda install libusb
 ```
 
 or with `mamba`:
 
 ```
-mamba install libusb libusb-cos6
+mamba install libusb
 ```
 
 It is possible to list all of the versions of `libusb` available on your platform with `conda`:
