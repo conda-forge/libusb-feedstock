@@ -24,14 +24,13 @@ outputs:
       build:
         - gnuconfig  # [unix]
         - {{ compiler('c') }}
+        - {{ stdlib('c') }}
         # cmake is only for doing string substitution for creating pkg-config file
         - cmake  # [win]
         - libtool  # [unix]
         - make  # [unix]
       host:
         - libudev
-      run:
-        - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
     test:
       commands:
         - test -f $PREFIX/include/libusb-1.0/libusb.h   # [unix]
