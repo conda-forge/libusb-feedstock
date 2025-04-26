@@ -6,16 +6,6 @@ set "SLN_PLAT=%CMAKE_GENERATOR_PLATFORM%"
 set "SLN_TOOLSET=%CMAKE_GENERATOR_TOOLSET%"
 set "SLN_FILE=msvc\libusb.sln"
 
-if "%VS_YEAR%" == "2015" (
-  set "TGT_SDK_VERSION=10.0.14393.795"
-)
-if "%VS_YEAR%" == "2017" (
-  set "TGT_SDK_VERSION=10.0.17763.0"
-)
-if "%VS_YEAR%" == "2019" (
-  set "TGT_SDK_VERSION=10.0.20348.0"
-)
-
 set "MSBUILD_CMD=%VSINSTALLDIR%MSBuild\%VS_VERSION%\Bin\MSBuild.exe"
 if not exist "%MSBUILD_CMD%" (
   :: Azure has at least VS 2017
@@ -52,7 +42,7 @@ if not exist "%MSBUILD_CMD%" (
   /p:Configuration="Release" ^
   /p:Platform="%SLN_PLAT%" ^
   /p:PlatformToolset="%SLN_TOOLSET%" ^
-  /p:WindowsTargetPlatformVersion="%TGT_SDK_VERSION%" ^
+  /t:libusb_dll ^
   /verbosity:normal
 if errorlevel 1 exit 1
 
