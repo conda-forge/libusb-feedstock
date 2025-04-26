@@ -85,7 +85,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libusb-green.svg)](https://anaconda.org/conda-forge/libusb) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libusb.svg)](https://anaconda.org/conda-forge/libusb) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libusb.svg)](https://anaconda.org/conda-forge/libusb) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libusb.svg)](https://anaconda.org/conda-forge/libusb) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libusb--split-green.svg)](https://anaconda.org/conda-forge/libusb-split) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libusb-split.svg)](https://anaconda.org/conda-forge/libusb-split) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libusb-split.svg)](https://anaconda.org/conda-forge/libusb-split) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libusb-split.svg)](https://anaconda.org/conda-forge/libusb-split) |
 
 Installing libusb
 =================
@@ -97,41 +97,41 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `libusb` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `libusb-split` can be installed with `conda`:
 
 ```
-conda install libusb
-```
-
-or with `mamba`:
-
-```
-mamba install libusb
-```
-
-It is possible to list all of the versions of `libusb` available on your platform with `conda`:
-
-```
-conda search libusb --channel conda-forge
+conda install libusb-split
 ```
 
 or with `mamba`:
 
 ```
-mamba search libusb --channel conda-forge
+mamba install libusb-split
+```
+
+It is possible to list all of the versions of `libusb-split` available on your platform with `conda`:
+
+```
+conda search libusb-split --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search libusb-split --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search libusb --channel conda-forge
+mamba repoquery search libusb-split --channel conda-forge
 
-# List packages depending on `libusb`:
-mamba repoquery whoneeds libusb --channel conda-forge
+# List packages depending on `libusb-split`:
+mamba repoquery whoneeds libusb-split --channel conda-forge
 
-# List dependencies of `libusb`:
-mamba repoquery depends libusb --channel conda-forge
+# List dependencies of `libusb-split`:
+mamba repoquery depends libusb-split --channel conda-forge
 ```
 
 
