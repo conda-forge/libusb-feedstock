@@ -28,6 +28,7 @@ requirements:
         - libtool
         - make
         - gnuconfig
+        - automake 1.17.*
 
   host:
     - if: linux
