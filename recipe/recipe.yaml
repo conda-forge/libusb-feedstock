@@ -31,7 +31,7 @@ requirements:
 
   host:
     - if: linux
-      then: libudev  # [linux]
+      then: libudev
 
 tests:
   - package_contents:
