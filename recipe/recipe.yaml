@@ -11,7 +11,7 @@ source:
   sha256: 966bb0d231f94a474eaae2e67da5ec844d3527a1f386456394ff432580634b29
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   run_exports:
